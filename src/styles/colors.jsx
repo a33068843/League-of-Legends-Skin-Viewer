@@ -28,11 +28,13 @@ const opacity80 = 'CC';
 const opacity90 = 'E5';
 const opacity100 = 'FF';
 
-// const white = XXX;
-// const black = XXX;
+const white = '#FFFFFF';
+const black = '#111111';
 const background = gray900;
 
 export const colors = {
+  white,
+  black,
   background,
   gray000,
   gray050,
