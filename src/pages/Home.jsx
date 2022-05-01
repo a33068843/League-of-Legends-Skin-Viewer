@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { ChampionAPI } from '@/api';
 import { colors } from '@/styles';
 import dinosaurImg from '@/assets/home-dinosaur.png';
 
@@ -57,6 +58,13 @@ export const Home = () => {
   const handleCounter = () => {
     setCount(count + 1);
   };
+  const handle = async () => {
+    const data = await ChampionAPI();
+    console.log(data);
+  };
+  useEffect(() => {
+    handle();
+  }, []);
   return (
     <Container>
       <Dinosaur />
