@@ -3,6 +3,9 @@ import styled, { keyframes } from 'styled-components';
 import { ChampionAPI } from '@/api';
 import { colors } from '@/styles';
 import dinosaurImg from '@/assets/home-dinosaur.png';
+import { ChampionAPI } from '@/api';
+import { useSelector, useDispatch } from 'react-redux';
+import { UPDATE_CHAMPIONS } from '@/stores/features/champions';
 
 const rotateAnimation = keyframes`
   0% { transform: rotate(0deg) }
@@ -55,16 +58,25 @@ const Button = styled.div`
 
 export const Home = () => {
   const [count, setCount] = useState(0);
+  const championData = useSelector((state) => state.champions);
+  const dispatch = useDispatch();
+
   const handleCounter = () => {
     setCount(count + 1);
   };
-  const handle = async () => {
+
+  const updateChampionsData = async () => {
     const data = await ChampionAPI();
-    console.log(data);
+    dispatch(UPDATE_CHAMPIONS(data));
   };
+
   useEffect(() => {
-    handle();
+    const hasData = championData.hasData;
+    if (!hasData) {
+      updateChampionsData();
+    }
   }, []);
+
   return (
     <Container>
       <Dinosaur />
