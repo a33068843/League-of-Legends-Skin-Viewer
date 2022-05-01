@@ -1,5 +1,7 @@
-const version = `12.7.1`;
+export const baseUrl = `http://ddragon.leagueoflegends.com/cdn`;
+export const version = `12.8.1`;
+export const region = `zh_TW`;
 
 export const config = {
-  championsUrl: `http://ddragon.leagueoflegends.com/cdn/${version}/data/zh_TW/champion.json`,
+  championsUrl: `${baseUrl}/${version}/data/${region}/champion.json`,
 };

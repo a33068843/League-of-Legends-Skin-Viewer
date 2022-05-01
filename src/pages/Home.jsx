@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { ChampionAPI } from '@/api';
 import { colors } from '@/styles';
 import dinosaurImg from '@/assets/home-dinosaur.png';
 import { ChampionAPI } from '@/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { UPDATE_CHAMPIONS } from '@/stores/features/champions';
+import { ChampionCard } from '@/app';
 
 const rotateAnimation = keyframes`
   0% { transform: rotate(0deg) }
@@ -19,6 +19,15 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const Wrapper = styled.div`
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Dinosaur = styled.div`
   width: clamp(200px, 20%, 600px);
   aspect-ratio: 1;
@@ -57,13 +66,11 @@ const Button = styled.div`
 `;
 
 export const Home = () => {
-  const [count, setCount] = useState(0);
-  const championData = useSelector((state) => state.champions);
+  const championsData = useSelector((state) => state.champions);
   const dispatch = useDispatch();
 
-  const handleCounter = () => {
-    setCount(count + 1);
-  };
+  const championObject = championsData.championList.data;
+  const championNameArray = Object.keys(championObject);
 
   const updateChampionsData = async () => {
     const data = await ChampionAPI();
@@ -71,7 +78,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    const hasData = championData.hasData;
+    const hasData = championsData.hasData;
     if (!hasData) {
       updateChampionsData();
     }
@@ -80,9 +87,12 @@ export const Home = () => {
   return (
     <Container>
       <Dinosaur />
+      <Wrapper>
+        <ChampionCard data={championObject} />
+      </Wrapper>
       <Title> Welcome to the Jurassic World!</Title>
-      <Button onClick={handleCounter}>Add Dinosaur</Button>
-      <SubTitle>There are {count} dinosaurs!</SubTitle>
+      {/* <Button onClick={handleCounter}>Add Dinosaur</Button> */}
+      <SubTitle>There are dinosaurs!</SubTitle>
     </Container>
   );
 };
