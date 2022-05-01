@@ -1,9 +1,9 @@
-// const primary = '#XXXXXX';
+const primary = '#FACE48';
 // const secondary = '#XXXXXX';
 
 const gray000 = '#FFFFFF';
 const gray050 = '#F4F5F5';
-const gray100 = '#E7E8E9';
+const gray100 = '#E0E0E0';
 const gray150 = '#DADBDD';
 const gray200 = '#CDCED0';
 const gray300 = '#B2B4B8';
@@ -33,6 +33,7 @@ const black = '#111111';
 const background = gray900;
 
 export const colors = {
+  primary,
   white,
   black,
   background,
