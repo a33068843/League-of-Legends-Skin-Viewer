@@ -1,3 +1,3 @@
-export { baseUrl, version, region } from './config';
+export { baseUrl, version, region, config } from './config';
 export { ChampionsAPI } from './ChampionsAPI';
 export { ChampionAPI } from './ChampionAPI';
