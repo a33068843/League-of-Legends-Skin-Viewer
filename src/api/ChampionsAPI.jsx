@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { config } from '@/api/config';
 
-export const ChampionAPI = async (id) => {
+export const ChampionsAPI = async () => {
   return await axios
-    .get(`${config.championUrl}${id}.json`)
+    .get(config.championsUrl)
     .then((res) => {
       console.log(res.data);
       return res.data;

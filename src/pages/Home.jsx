@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { colors } from '@/styles';
 import dinosaurImg from '@/assets/home-dinosaur.png';
-import { ChampionAPI } from '@/api';
+import { ChampionsAPI } from '@/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { UPDATE_CHAMPIONS } from '@/stores/features/champions';
 import { ChampionCard } from '@/app';
@@ -68,17 +68,16 @@ const Button = styled.div`
 export const Home = () => {
   const championsData = useSelector((state) => state.champions);
   const dispatch = useDispatch();
-
   const championObject = championsData.championList.data;
-  const championNameArray = Object.keys(championObject);
 
   const updateChampionsData = async () => {
-    const data = await ChampionAPI();
+    const data = await ChampionsAPI();
     dispatch(UPDATE_CHAMPIONS(data));
   };
 
   useEffect(() => {
     const hasData = championsData.hasData;
+    console.log(hasData);
     if (!hasData) {
       updateChampionsData();
     }

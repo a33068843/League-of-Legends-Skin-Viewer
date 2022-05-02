@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   hasData: false,
   championList: {},
+  championData: {},
 };
 
 const championsSlice = createSlice({
@@ -20,9 +21,19 @@ const championsSlice = createSlice({
         state.hasData = true;
       }
     },
+    UPDATE_CHAMPION: (state, action) => {
+      const championName = Object.keys(action.payload.data);
+      const hasChampion = (item) => {
+        return !!state.championData[item];
+      };
+      if (!hasChampion(championName)) {
+        state.championData[championName] = action.payload.data;
+      }
+    },
   },
 });
 
 export const championsReducer = championsSlice.reducer;
 
-export const { UPDATE_CHAMPIONS } = championsSlice.actions;
+export const { UPDATE_CHAMPIONS, UPDATE_CHAMPION } =
+  championsSlice.actions;

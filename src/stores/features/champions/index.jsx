@@ -1,1 +1,5 @@
-export { championsReducer, UPDATE_CHAMPIONS } from './championsSlice';
+export {
+  championsReducer,
+  UPDATE_CHAMPIONS,
+  UPDATE_CHAMPION,
+} from './championsSlice';
