@@ -7,7 +7,7 @@ import {
   Outlet,
   useLocation,
 } from 'react-router-dom';
-import { Home } from '@/pages';
+import { Home, Skin } from '@/pages';
 
 const BodyContainer = styled.div`
   width: 100%;
@@ -22,6 +22,7 @@ export const Base = () => {
     <BodyContainer>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/:id' element={<Skin />} />
       </Routes>
     </BodyContainer>
   );
