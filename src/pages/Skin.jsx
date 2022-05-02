@@ -9,6 +9,7 @@ import { ChampionSkin } from '@/app';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   min-height: 100vh;
 `;
 const SlideStyles = styled.div``;
